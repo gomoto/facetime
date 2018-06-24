@@ -8,6 +8,7 @@ interface AppState {}
 class App extends React.Component<AppProps, AppState> {
   private _localVideo: React.RefObject<HTMLVideoElement>;
   private _remoteVideo: React.RefObject<HTMLVideoElement>;
+  private _remoteId: React.RefObject<HTMLInputElement>;
   private _localStream: MediaStream | null;
   private _peer: Peer;
 
@@ -15,17 +16,19 @@ class App extends React.Component<AppProps, AppState> {
     super(props);
     this._localVideo = React.createRef();
     this._remoteVideo = React.createRef();
+    this._remoteId = React.createRef();
     this._localStream = null;
     this._peer = new Peer({key: 'peerjs'}); // types?
-    this._peer.on('open', () => {
-      console.log(`my peer id is ${this._peer.id}`);
-    });
   }
 
   async componentDidMount() {
     const localVideo = this._localVideo.current as HTMLVideoElement;
     this._localStream = await navigator.mediaDevices.getUserMedia({video: true});
     localVideo.srcObject = this._localStream;
+
+    this._peer.on('open', () => {
+      this.setState({}); // to render peer id
+    });
 
     // when remote calls
     this._peer.on('call', (call: Peer.MediaConnection) => {
@@ -40,9 +43,11 @@ class App extends React.Component<AppProps, AppState> {
     });
   }
 
-  call(): void {
-    console.log('call()');
-    const call = this._peer.call('cheesemonkeybananabread', this._localStream);
+  call(event: React.FormEvent): void {
+    event.preventDefault();
+    const remoteId = this._remoteId.current as HTMLInputElement;
+    console.log(`calling ${remoteId.value}`);
+    const call = this._peer.call(remoteId.value, this._localStream);
     this.captureCallStream(call);
   }
 
@@ -73,7 +78,11 @@ class App extends React.Component<AppProps, AppState> {
           ref={this._remoteVideo}
         ></video>
         <div className="controls">
-          <button onClick={this.call.bind(this)}>Call</button>
+          <span>{this._peer.id}</span>
+          <form onSubmit={this.call.bind(this)}>
+            <input type="text" ref={this._remoteId}/>
+            <button type="submit">Call</button>
+          </form>
         </div>
       </div>
     );
