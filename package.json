@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "peerjs": "git+https://github.com/peers/peerjs.git#380646fcb7781037c181ff2b8fa7c4b4b2fc2b93"
   },
   "devDependencies": {
     "@types/react": "^16.4.1",
