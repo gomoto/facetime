@@ -32,7 +32,7 @@ class App extends React.Component<AppProps, AppState> {
 
     // when remote calls
     this._peer.on('call', (call: Peer.MediaConnection) => {
-      if (!window.confirm('Answer call?')) {
+      if (!window.confirm(`${call.peer} is calling. Answer call?`)) {
         return;
       }
       this.answer(call);
