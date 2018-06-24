@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "build": "parcel build index.html --public-url / --no-source-maps",
+    "start": "parcel serve index.html"
   },
   "dependencies": {
     "react": "^16.4.1",
