@@ -16,7 +16,10 @@ class App extends React.Component<AppProps, AppState> {
     this._localVideo = React.createRef();
     this._remoteVideo = React.createRef();
     this._localStream = null;
-    this._peer = new Peer({}); // types?
+    this._peer = new Peer({key: 'peerjs'}); // types?
+    this._peer.on('open', () => {
+      console.log(`my peer id is ${this._peer.id}`);
+    });
   }
 
   async componentDidMount() {
@@ -30,6 +33,10 @@ class App extends React.Component<AppProps, AppState> {
         return;
       }
       this.answer(call);
+    });
+
+    this._peer.on('error', (error) => {
+      console.error(error);
     });
   }
 
