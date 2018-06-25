@@ -65,7 +65,8 @@ class App extends React.Component<AppProps, AppState> {
     }
   }
 
-  call(event: React.FormEvent): void {
+  // used in template
+  call = (event: React.FormEvent): void => {
     event.preventDefault();
     const remoteId = this._remoteId.current as HTMLInputElement;
     const call = this._peer.call(remoteId.value, this._localStream);
@@ -89,13 +90,14 @@ class App extends React.Component<AppProps, AppState> {
     const remoteContent = this.state.isRemoteVisible ? (
       <video
         className={styles.remoteVideo}
-        autoPlay
+        autoPlay={true}
         ref={this._remoteVideo}
-      ></video>
+      />
     ) : (
       <form
         className={styles.callForm}
-        onSubmit={this.call.bind(this)}>
+        onSubmit={this.call}
+      >
         <input type="text" ref={this._remoteId}/>
         <button type="submit">Call</button>
       </form>
@@ -109,9 +111,9 @@ class App extends React.Component<AppProps, AppState> {
         <div className={styles.localVideoContainer}>
           <video
             className={styles.localVideo}
-            autoPlay
+            autoPlay={true}
             ref={this._localVideo}
-          ></video>
+          />
           <div className={styles.localId}>
             <span>{this.state.localId}</span>
             <button className={styles.localIdCopyButton} type="button">Copy</button>
