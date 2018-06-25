@@ -95,11 +95,11 @@ class App extends React.Component<AppProps, AppState> {
       />
     ) : (
       <form
-        className={styles.callForm}
+        className={styles.remoteForm}
         onSubmit={this.call}
       >
-        <input type="text" ref={this._remoteId}/>
-        <button type="submit">Call</button>
+        <input className={styles.remoteId} type="text" ref={this._remoteId}/>
+        <button className={styles.remoteFormSubmit} type="submit">Call</button>
       </form>
     );
 
