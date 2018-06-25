@@ -1,31 +1,48 @@
+:root {
+  --black: #505050;
+  --gray: #808080;
+  --white: #fafafa;
+}
 .app {
   height: 100%;
   width: 100%;
+  color: var(--black);
+}
+.remoteVideoContainer {
+  height: 100%;
+  width: 100%;
+}
+.localVideoContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 .video {
-  object-fit: contain;
+  display: block;
   transform: rotateY(180deg);
 }
 .remoteVideo {
   composes: video;
   height: 100%;
   width: 100%;
+  object-fit: contain;
 }
 .localVideo {
   composes: video;
-  position: fixed;
-  top: 8px;
-  right: 8px;
-  height: 100px;
-  width: 100px;
+  width: 200px;
 }
-.controls {
-  position: fixed;
-  top: 8px;
-  left: 8px;
-  padding: 16px 24px;
-  background-color: #585858;
+.localId {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 32px;
+  padding: 0 8px;
+  background-color: var(--gray);
+  color: var(--white);
   opacity: 0.9;
-  border: 1px solid #404040;
-  box-shadow: 2px 4px 4px 0 rgba(0,0,0,0.12);
+}
+.localIdCopyButton {
+  margin-left: 4px;
+}
+.callForm {
 }

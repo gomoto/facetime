@@ -49,6 +49,7 @@ class App extends React.Component<AppProps, AppState> {
         return;
       }
       this.answer(call);
+      this.setState({isRemoteVisible: true});
     });
 
     this._peer.on('error', (error) => {
@@ -78,28 +79,36 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   render() {
-    const remoteVideo = this.state.isRemoteVisible ? (
+    const remoteContent = this.state.isRemoteVisible ? (
       <video
         className={styles.remoteVideo}
         autoPlay
         ref={this._remoteVideo}
       ></video>
-    ) : null;
+    ) : (
+      <form
+        className={styles.callForm}
+        onSubmit={this.call.bind(this)}>
+        <input type="text" ref={this._remoteId}/>
+        <button type="submit">Call</button>
+      </form>
+    );
 
     return (
       <div className={styles.app}>
-        <video
-          className={styles.localVideo}
-          autoPlay
-          ref={this._localVideo}
-        ></video>
-        {remoteVideo}
-        <div className={styles.controls}>
-          <span>{this.state.localId}</span>
-          <form onSubmit={this.call.bind(this)}>
-            <input type="text" ref={this._remoteId}/>
-            <button type="submit">Call</button>
-          </form>
+        <div className={styles.remoteVideoContainer}>
+          {remoteContent}
+        </div>
+        <div className={styles.localVideoContainer}>
+          <video
+            className={styles.localVideo}
+            autoPlay
+            ref={this._localVideo}
+          ></video>
+          <div className={styles.localId}>
+            <span>{this.state.localId}</span>
+            <button className={styles.localIdCopyButton} type="button">Copy</button>
+          </div>
         </div>
       </div>
     );
