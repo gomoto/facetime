@@ -4,18 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --noEmit && npm run lint && parcel build ./src/index.html --public-url / --no-source-maps",
+    "build": "parcel build ./src/index.html --public-url / --no-source-maps",
     "start": "parcel serve ./src/index.html",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "ts": "tsc --noEmit # parcel ignores ts errors"
   },
   "dependencies": {
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "peerjs": "git+https://github.com/peers/peerjs.git#380646fcb7781037c181ff2b8fa7c4b4b2fc2b93"
   },
   "devDependencies": {
     "@types/react": "^16.4.1",
     "@types/react-dom": "^16.0.6",
     "parcel-bundler": "^1.9.2",
+    "postcss-modules": "^1.1.0",
     "tslint": "^5.10.0",
     "tslint-react": "^3.6.0",
     "typescript": "^2.9.2"

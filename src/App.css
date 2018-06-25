@@ -1,0 +1,80 @@
+:root {
+  --black: #505050;
+  --white: #fafafa;
+  --remote-form-height: 24px;
+  --remote-form-border: 1px solid #cccccc;
+}
+.app {
+  height: 100%;
+  width: 100%;
+  color: var(--black);
+}
+.remoteVideoContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.localVideoContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+.video {
+  display: block;
+  transform: rotateY(180deg);
+}
+.remoteVideo {
+  composes: video;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.remoteForm {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.remoteId {
+  height: var(--remote-form-height);
+  border: var(--remote-form-border);
+  padding: 0 4px;
+}
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  flex: 0 0 auto;
+  font-size: 18px;
+}
+.remoteFormSubmit {
+  composes: iconButton;
+  height: var(--remote-form-height);
+  width: var(--remote-form-height);
+  border: var(--remote-form-border);
+  border-left: 0;
+}
+.localVideo {
+  composes: video;
+  width: 200px;
+}
+.localId {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 32px;
+  padding: 0 8px;
+  background-color: var(--black);
+  color: var(--white);
+  opacity: 0.9;
+}
+.localIdCopyButton {
+  composes: iconButton;
+  margin-left: 4px;
+  height: 24px;
+  width: 24px;
+}
