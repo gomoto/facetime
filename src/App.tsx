@@ -3,7 +3,9 @@ import Peer = require('peerjs');
 
 interface AppProps {}
 
-interface AppState {}
+interface AppState {
+  localId: string;
+}
 
 class App extends React.Component<AppProps, AppState> {
   private _localVideo: React.RefObject<HTMLVideoElement>;
@@ -14,6 +16,12 @@ class App extends React.Component<AppProps, AppState> {
 
   constructor(props: AppProps) {
     super(props);
+
+    // intial state
+    this.state = {
+      localId: ''
+    };
+
     this._localVideo = React.createRef();
     this._remoteVideo = React.createRef();
     this._remoteId = React.createRef();
@@ -27,7 +35,9 @@ class App extends React.Component<AppProps, AppState> {
     localVideo.srcObject = this._localStream;
 
     this._peer.on('open', () => {
-      this.setState({}); // to render peer id
+      this.setState({
+        localId: this._peer.id
+      });
     });
 
     // when remote calls
@@ -76,7 +86,7 @@ class App extends React.Component<AppProps, AppState> {
           ref={this._remoteVideo}
         ></video>
         <div className="controls">
-          <span>{this._peer.id}</span>
+          <span>{this.state.localId}</span>
           <form onSubmit={this.call.bind(this)}>
             <input type="text" ref={this._remoteId}/>
             <button type="submit">Call</button>
