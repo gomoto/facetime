@@ -2,16 +2,22 @@
   height: 100%;
   width: 100%;
 }
-.localVideo {
-  height: 100%;
-  width: 100%;
+.video {
   object-fit: contain;
   transform: rotateY(180deg);
 }
+.localVideo {
+  composes: video;
+  height: 100%;
+  width: 100%;
+}
 .remoteVideo {
+  composes: video;
   position: fixed;
   top: 8px;
   right: 8px;
+  height: 100px;
+  width: 100px;
 }
 .controls {
   position: fixed;
