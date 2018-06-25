@@ -14,6 +14,7 @@ class App extends React.Component<AppProps, AppState> {
   private _remoteVideo: React.RefObject<HTMLVideoElement>;
   private _remoteId: React.RefObject<HTMLInputElement>;
   private _localStream: MediaStream | null;
+  private _remoteStream: MediaStream | null;
   private _peer: Peer;
 
   constructor(props: AppProps) {
@@ -29,6 +30,7 @@ class App extends React.Component<AppProps, AppState> {
     this._remoteVideo = React.createRef();
     this._remoteId = React.createRef();
     this._localStream = null;
+    this._remoteStream = null;
     this._peer = new Peer({key: 'peerjs'});
   }
 
@@ -57,6 +59,13 @@ class App extends React.Component<AppProps, AppState> {
     });
   }
 
+  componentDidUpdate(): void {
+    if (this._remoteStream) {
+      const remoteVideo = this._remoteVideo.current as HTMLVideoElement;
+      remoteVideo.srcObject = this._remoteStream;
+    }
+  }
+
   call(event: React.FormEvent): void {
     event.preventDefault();
     const remoteId = this._remoteId.current as HTMLInputElement;
@@ -71,10 +80,8 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   captureCallStream(call: Peer.MediaConnection): void {
-    // capture remote video stream
-    const remoteVideo = this._remoteVideo.current as HTMLVideoElement;
     call.on('stream', (remoteStream) => {
-      remoteVideo.srcObject = remoteStream;
+      this._remoteStream = remoteStream;
     });
   }
 
