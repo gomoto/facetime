@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Peer = require('peerjs');
+const styles = require('./App.css');
 
 interface AppProps {}
 
@@ -76,8 +77,9 @@ class App extends React.Component<AppProps, AppState> {
 
   render() {
     return (
-      <div>
+      <div className={styles.app}>
         <video
+          className={styles.video}
           autoPlay
           ref={this._localVideo}
         ></video>
