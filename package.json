@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --noEmit && npm run lint && parcel build ./src/index.html --public-url / --no-source-maps",
+    "build": "parcel build ./src/index.html --public-url / --no-source-maps",
     "start": "parcel serve ./src/index.html",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "ts": "tsc --noEmit # parcel ignores ts errors"
   },
   "dependencies": {
     "react": "^16.4.1",
