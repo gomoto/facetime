@@ -2,6 +2,23 @@
   height: 100%;
   width: 100%;
 }
-.video {
+.localVideo {
+  height: 100%;
+  width: 100%;
   object-fit: contain;
+}
+.remoteVideo {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+}
+.controls {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  padding: 16px 24px;
+  background-color: #585858;
+  opacity: 0.9;
+  border: 1px solid #404040;
+  box-shadow: 2px 4px 4px 0 rgba(0,0,0,0.12);
 }

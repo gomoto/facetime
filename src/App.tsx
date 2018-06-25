@@ -79,15 +79,16 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div className={styles.app}>
         <video
-          className={styles.video}
+          className={styles.localVideo}
           autoPlay
           ref={this._localVideo}
         ></video>
         <video
+          className={styles.remoteVideo}
           autoPlay
           ref={this._remoteVideo}
         ></video>
-        <div className="controls">
+        <div className={styles.controls}>
           <span>{this.state.localId}</span>
           <form onSubmit={this.call.bind(this)}>
             <input type="text" ref={this._remoteId}/>
