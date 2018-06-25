@@ -51,7 +51,6 @@ class App extends React.Component<AppProps, AppState> {
         return;
       }
       this.answer(call);
-      this.setState({isRemoteVisible: true});
     });
 
     this._peer.on('error', (error) => {
@@ -83,6 +82,7 @@ class App extends React.Component<AppProps, AppState> {
     call.on('stream', (remoteStream) => {
       this._remoteStream = remoteStream;
     });
+    this.setState({isRemoteVisible: true});
   }
 
   render() {
