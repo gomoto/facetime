@@ -36,7 +36,7 @@ class App extends React.Component<AppProps, AppState> {
 
   async componentDidMount() {
     const localVideo = this._localVideo.current as HTMLVideoElement;
-    this._localStream = await navigator.mediaDevices.getUserMedia({video: true});
+    this._localStream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
     localVideo.srcObject = this._localStream;
 
     this._peer.on('open', () => {
