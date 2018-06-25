@@ -99,7 +99,7 @@ class App extends React.Component<AppProps, AppState> {
         onSubmit={this.call}
       >
         <input className={styles.remoteId} type="text" ref={this._remoteId}/>
-        <button className={styles.remoteFormSubmit} type="submit">
+        <button className={styles.remoteFormSubmit} type="submit" title="Start call">
           <i className={`material-icons ${styles.remoteFormSubmitIcon}`}>videocam</i>
         </button>
       </form>
