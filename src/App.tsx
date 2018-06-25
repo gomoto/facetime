@@ -81,8 +81,8 @@ class App extends React.Component<AppProps, AppState> {
   captureCallStream(call: Peer.MediaConnection): void {
     call.on('stream', (remoteStream) => {
       this._remoteStream = remoteStream;
+      this.setState({isRemoteVisible: true});
     });
-    this.setState({isRemoteVisible: true});
   }
 
   render() {
