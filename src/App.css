@@ -6,12 +6,12 @@
   object-fit: contain;
   transform: rotateY(180deg);
 }
-.localVideo {
+.remoteVideo {
   composes: video;
   height: 100%;
   width: 100%;
 }
-.remoteVideo {
+.localVideo {
   composes: video;
   position: fixed;
   top: 8px;

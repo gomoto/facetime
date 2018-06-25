@@ -6,6 +6,7 @@ interface AppProps {}
 
 interface AppState {
   localId: string;
+  isRemoteVisible: boolean;
 }
 
 class App extends React.Component<AppProps, AppState> {
@@ -20,7 +21,8 @@ class App extends React.Component<AppProps, AppState> {
 
     // intial state
     this.state = {
-      localId: ''
+      localId: '',
+      isRemoteVisible: false
     };
 
     this._localVideo = React.createRef();
@@ -76,6 +78,14 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   render() {
+    const remoteVideo = this.state.isRemoteVisible ? (
+      <video
+        className={styles.remoteVideo}
+        autoPlay
+        ref={this._remoteVideo}
+      ></video>
+    ) : null;
+
     return (
       <div className={styles.app}>
         <video
@@ -83,11 +93,7 @@ class App extends React.Component<AppProps, AppState> {
           autoPlay
           ref={this._localVideo}
         ></video>
-        <video
-          className={styles.remoteVideo}
-          autoPlay
-          ref={this._remoteVideo}
-        ></video>
+        {remoteVideo}
         <div className={styles.controls}>
           <span>{this.state.localId}</span>
           <form onSubmit={this.call.bind(this)}>
