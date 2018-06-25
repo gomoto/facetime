@@ -1,6 +1,5 @@
 :root {
   --black: #505050;
-  --gray: #808080;
   --white: #fafafa;
   --remote-form-height: 24px;
   --remote-form-border: 1px solid #cccccc;
@@ -69,7 +68,7 @@
   align-items: center;
   height: 32px;
   padding: 0 8px;
-  background-color: var(--gray);
+  background-color: var(--black);
   color: var(--white);
   opacity: 0.9;
 }
