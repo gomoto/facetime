@@ -86,6 +86,16 @@ class App extends React.Component<AppProps, AppState> {
     });
   }
 
+  copyLocalIdToClipboard = (): void => {
+    const input = document.createElement('input');
+    const root = document.getElementById('root') as HTMLElement;
+    root.appendChild(input);
+    input.value = this._peer.id;
+    input.select();
+    document.execCommand('copy');
+    root.removeChild(input);
+  }
+
   render() {
     const remoteContent = this.state.isRemoteVisible ? (
       <video
@@ -100,7 +110,7 @@ class App extends React.Component<AppProps, AppState> {
       >
         <input className={styles.remoteId} type="text" ref={this._remoteId}/>
         <button className={styles.remoteFormSubmit} type="submit" title="Start call">
-          <i className={`material-icons ${styles.remoteFormSubmitIcon}`}>videocam</i>
+          <i className={`material-icons ${styles.icon}`}>videocam</i>
         </button>
       </form>
     );
@@ -118,7 +128,9 @@ class App extends React.Component<AppProps, AppState> {
           />
           <div className={styles.localId}>
             <span>{this.state.localId}</span>
-            <button className={styles.localIdCopyButton} type="button">Copy</button>
+            <button className={styles.localIdCopyButton} type="button" title="Copy to clipboard" onClick={this.copyLocalIdToClipboard}>
+              <i className={`material-icons ${styles.icon}`}>file_copy</i>
+            </button>
           </div>
         </div>
       </div>

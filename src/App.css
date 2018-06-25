@@ -43,18 +43,21 @@
   border: var(--remote-form-border);
   padding: 0 4px;
 }
-.remoteFormSubmit {
-  height: var(--remote-form-height);
-  width: var(--remote-form-height);
-  border: var(--remote-form-border);
-  border-left: 0;
+.iconButton {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.remoteFormSubmitIcon {
+.icon {
   flex: 0 0 auto;
   font-size: 18px;
+}
+.remoteFormSubmit {
+  composes: iconButton;
+  height: var(--remote-form-height);
+  width: var(--remote-form-height);
+  border: var(--remote-form-border);
+  border-left: 0;
 }
 .localVideo {
   composes: video;
@@ -71,5 +74,8 @@
   opacity: 0.9;
 }
 .localIdCopyButton {
+  composes: iconButton;
   margin-left: 4px;
+  height: 24px;
+  width: 24px;
 }
