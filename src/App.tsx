@@ -18,7 +18,7 @@ class App extends React.Component<AppProps, AppState> {
     this._remoteVideo = React.createRef();
     this._remoteId = React.createRef();
     this._localStream = null;
-    this._peer = new Peer({key: 'peerjs'}); // types?
+    this._peer = new Peer({key: 'peerjs'});
   }
 
   async componentDidMount() {
@@ -46,13 +46,11 @@ class App extends React.Component<AppProps, AppState> {
   call(event: React.FormEvent): void {
     event.preventDefault();
     const remoteId = this._remoteId.current as HTMLInputElement;
-    console.log(`calling ${remoteId.value}`);
     const call = this._peer.call(remoteId.value, this._localStream);
     this.captureCallStream(call);
   }
 
   answer(call: Peer.MediaConnection): void {
-    console.log('answer()');
     // answer call with local video stream
     call.answer(this._localStream);
     this.captureCallStream(call);
