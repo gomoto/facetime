@@ -34,6 +34,9 @@
 }
 .remoteForm {
   flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .remoteId {
   height: var(--remote-form-height);
@@ -42,9 +45,16 @@
 }
 .remoteFormSubmit {
   height: var(--remote-form-height);
+  width: var(--remote-form-height);
   border: var(--remote-form-border);
   border-left: 0;
-  padding: 0 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.remoteFormSubmitIcon {
+  flex: 0 0 auto;
+  font-size: 18px;
 }
 .localVideo {
   composes: video;
