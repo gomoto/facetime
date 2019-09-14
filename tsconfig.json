@@ -8,6 +8,7 @@
     "jsx": "react",
     "experimentalDecorators": true,
     "sourceMap": true,
+    "skipLibCheck": true,
     "lib": [
       "es2017",
       "dom"

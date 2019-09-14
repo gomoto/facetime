@@ -10,7 +10,7 @@
     "ts": "tsc --noEmit # parcel ignores ts errors"
   },
   "dependencies": {
-    "peerjs": "git+https://github.com/peers/peerjs.git#380646fcb7781037c181ff2b8fa7c4b4b2fc2b93",
+    "peerjs": "^1.0.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
