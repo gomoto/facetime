@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Peer from 'peerjs';
-const styles = require('./App.css');
+const styles = require('./App.module.css');
 
 interface AppProps {}
 
