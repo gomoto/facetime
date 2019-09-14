@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build ./src/index.html --public-url / --no-source-maps",
+    "build": "npm run lint && npm run ts && parcel build ./src/index.html --public-url / --no-source-maps",
     "start": "parcel serve ./src/index.html",
     "lint": "tslint --project .",
     "ts": "tsc --noEmit # parcel ignores ts errors"
