@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Peer = require('peerjs');
+import Peer from 'peerjs';
 const styles = require('./App.css');
 
 interface AppProps {}
