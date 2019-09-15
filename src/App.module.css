@@ -31,6 +31,13 @@
   width: 100%;
   object-fit: contain;
 }
+.launchForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center */
+  align-items: center;
+  flex-wrap: nowrap;
+}
 .remoteForm {
   flex: 0 0 auto;
   display: flex;

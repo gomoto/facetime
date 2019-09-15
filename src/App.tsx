@@ -103,13 +103,21 @@ class App extends React.Component<AppProps, AppState> {
       />
     ) : (
       <form
-        className={styles.remoteForm}
+        className={styles.launchForm}
         onSubmit={this.call}
       >
-        <input className={styles.remoteId} type="text" ref={this._remoteId}/>
-        <button className={styles.remoteFormSubmit} type="submit" title="Start call">
-          <i className={`material-icons ${styles.icon}`}>videocam</i>
-        </button>
+        <div className={styles.remoteForm}>
+          <input className={styles.remoteId} type="text" ref={this._remoteId}/>
+          <button className={styles.remoteFormSubmit} type="submit" title="Start call">
+            <i className={`material-icons ${styles.icon}`}>videocam</i>
+          </button>
+        </div>
+        <div className={styles.localId}>
+          <span>{this.state.localId}</span>
+          <button className={styles.localIdCopyButton} type="button" title="Copy to clipboard" onClick={this.copyLocalIdToClipboard}>
+            <i className={`material-icons ${styles.icon}`}>file_copy</i>
+          </button>
+        </div>
       </form>
     );
 
@@ -124,12 +132,6 @@ class App extends React.Component<AppProps, AppState> {
             autoPlay={true}
             ref={this._localVideo}
           />
-          <div className={styles.localId}>
-            <span>{this.state.localId}</span>
-            <button className={styles.localIdCopyButton} type="button" title="Copy to clipboard" onClick={this.copyLocalIdToClipboard}>
-              <i className={`material-icons ${styles.icon}`}>file_copy</i>
-            </button>
-          </div>
         </div>
       </div>
     );
