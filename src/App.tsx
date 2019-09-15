@@ -106,17 +106,23 @@ class App extends React.Component<AppProps, AppState> {
         className={styles.launchForm}
         onSubmit={this.call}
       >
-        <div className={styles.launchFormItem}>
-          <input className={styles.launchFormId} type="text" ref={this._remoteId}/>
-          <button className={styles.launchFormButton} type="submit" title="Start call">
-            <i className={`material-icons ${styles.icon}`}>videocam</i>
-          </button>
+        <div className={styles.launchFormGroup}>
+          <label className={styles.launchFormLabel}>Call someone's ID:</label>
+          <div className={styles.launchFormItem}>
+            <input className={styles.launchFormId} type="text" ref={this._remoteId}/>
+            <button className={styles.launchFormButton} type="submit" title="Start call">
+              <i className={`material-icons ${styles.icon}`}>videocam</i>
+            </button>
+          </div>
         </div>
-        <div className={styles.launchFormItem}>
-          <span className={styles.launchFormId}>{this.state.localId}</span>
-          <button className={styles.launchFormButton} type="button" title="Copy to clipboard" onClick={this.copyLocalIdToClipboard}>
-            <i className={`material-icons ${styles.icon}`}>file_copy</i>
-          </button>
+        <div className={styles.launchFormGroup}>
+          <label className={styles.launchFormLabel}>Copy your ID:</label>
+          <div className={styles.launchFormItem}>
+            <span className={styles.launchFormId}>{this.state.localId}</span>
+            <button className={styles.launchFormButton} type="button" title="Copy to clipboard" onClick={this.copyLocalIdToClipboard}>
+              <i className={`material-icons ${styles.icon}`}>file_copy</i>
+            </button>
+          </div>
         </div>
       </form>
     );
