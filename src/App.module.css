@@ -31,34 +31,34 @@
   width: 100%;
   object-fit: contain;
 }
-.launchForm {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center; /* vertically center */
   align-items: center;
   flex-wrap: nowrap;
 }
-.launchFormGroup {
+.formGroup {
   flex: 0 0 auto;
 }
-.launchFormLabel {
+.formLabel {
   display: block;
   font-size: 12px;
 }
-.launchFormItem {
+.formItem {
   flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 16px;
 }
-.launchFormId {
+.formId {
   height: var(--remote-form-height);
   width: 160px;
   border: var(--remote-form-border);
   padding: 0 4px;
 }
-.launchFormButton {
+.formButton {
   display: flex;
   justify-content: center;
   align-items: center;
